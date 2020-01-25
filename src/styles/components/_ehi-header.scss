@@ -1,0 +1,224 @@
+body.scroll-locked {
+    overflow: hidden;
+}
+
+.skip-content:focus {
+    all: unset;
+    position: absolute;
+    background: var(--yellow-lightest);
+    padding: var(--space-xs) var(--space-sm);
+    z-index: 100001;
+    outline: var(--green) solid 3px;
+}
+
+button:focus,
+a:focus {
+    outline: var(--green) solid 3px;
+    outline-offset: 4px;
+}
+
+button:active:focus,
+a:active:focus {
+    outline: none;
+}
+
+ehi-header {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: var(--white);
+    transition: background 0.24s;
+    &.is-fixed {
+        position: fixed;
+        background: rgba(255, 255, 255, 0.95);
+    }
+    &[is-transparent='true'] {
+        position: fixed;
+        background: transparent;
+        & > .container {
+            border-bottom: 1px solid var(--white);
+        }
+        .main-logo path {
+            fill: var(--white);
+        }
+        svg[aria-label='Checkout'] {
+            path:first-child {
+                stroke: var(--white);
+            }
+            path:not(:first-child) {
+                fill: var(--white);
+            }
+        }
+        .nav-item--main:not(.has-dropdown) {
+            color: var(--white);
+        }
+        .nav-item--main.has-dropdown:not(:hover) {
+            & > button {
+                color: var(--white);
+                &:after {
+                    filter: invert(1);
+                }
+            }
+        }
+        .hamburger span {
+            background: var(--white);
+        }
+    }
+    .main-logo {
+        height: 24px;
+        width: auto;
+        transform: translateY(-2px);
+        @include media-breakpoint-up(md) {
+            height: initial;
+        }
+    }
+    .nav-item {
+        &--main {
+            &.has-dropdown {
+                & > button:after {
+                    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAAaklEQVQoU3WQUQ2AMAwFb06QgARQgEUsTAFIQAJOIG+shC28fqzZy93SLgEDT521u1a4BKzAAszAYegR2IAsQZcduIwUsNhJh8pJDawJQviTlGmM8nKM+xV6KXZ84Qj6PWM85Q3sBOX2q2+LoRf5U2kjCQAAAABJRU5ErkJggg==');
+                    margin-left: 10px;
+                    margin-bottom: 3px;
+                }
+                &.is-open {
+                    background: var(--gray-lighter);
+                    box-shadow: inset 0px 7px 3px -3px var(--green);
+                    .nav-item__dropdown {
+                        // display: block;
+                        pointer-events: initial;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(32px);
+                    }
+                }
+            }
+            .nav-link {
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                color: inherit;
+                &:not(a) {
+                    cursor: default;
+                }
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+            &.position-relative {
+                &.learn .nav-item__dropdown {
+                    min-width: 42vw;
+                }
+                &.about .nav-item__dropdown {
+                    min-width: 240px;
+                }
+                &.invoca .nav-item__dropdown {
+                    min-width: 260px;
+                }
+            }
+        }
+        &__dropdown {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            transform: translateY(32px) rotateX(-15deg);
+            transform-origin: 50% -50px;
+            opacity: 0;
+            visibility: hidden;
+            will-change: transform, opacity, visibility;
+            transition-property: transform, opacity, visibility;
+            transition-duration: 0.25s;
+            pointer-events: none;
+            a {
+                color: var(--black-text);
+            }
+            & [class*='col']:not(:last-child) {
+                border-right: 1px solid var(--gray);
+            }
+        }
+    }
+    .hamburger {
+        width: 24px;
+        height: 18px;
+        position: relative;
+        transform: rotate(0deg);
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+        z-index: 9999;
+        span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: var(--black);
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+            &:nth-child(1) {
+                top: 0px;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                top: 8px;
+            }
+
+            &:nth-child(4) {
+                top: 16px;
+            }
+        }
+    }
+
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        z-index: 9998;
+        transform: translateY(-100%);
+        transition-property: visibility, transform;
+        transition-duration: 0.5s;
+        transition-timing-function: var(--cubic-bezier);
+        will-change: transform;
+        visibility: hidden;
+        a {
+            text-align: center;
+            color: var(--black-text);
+        }
+    }
+
+    .nav-item--mobile {
+        &.is-open {
+            .hamburger span {
+                background: var(--black-text);
+                &:nth-child(1) {
+                    top: 18px;
+                    width: 0%;
+                    left: 50%;
+                }
+                &:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                }
+
+                &:nth-child(4) {
+                    top: 18px;
+                    width: 0%;
+                    left: 50%;
+                }
+            }
+            button[aria-label='mobile menu navigation'] + .menu-overlay {
+                transform: none;
+                visibility: visible;
+            }
+        }
+    }
+}

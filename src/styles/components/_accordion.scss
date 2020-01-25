@@ -1,0 +1,38 @@
+.accordion {
+    &-trigger {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        color: var(--black-text);
+        cursor: pointer;
+        padding: var(--space-md);
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.24s;
+        &:hover {
+            background-color: var(--gray-lighter);
+        }
+        span {
+            transition: transform 0.24s var(--cubic-bezier);
+        }
+        &.is-active {
+            background-color: var(--gray-lighter);
+            & + .accordion-panel {
+                visibility: visible;
+            }
+            span {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    &-panel {
+        padding: 0 var(--space-lg);
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: max-height 0.24s var(--cubic-bezier);
+    }
+}

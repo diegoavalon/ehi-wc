@@ -1,0 +1,40 @@
+{
+    "name": "ehi-theme",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "rimraf dist && rollup -c rollup.config.js",
+        "deploy": "aws2 s3 sync dist s3://ehi-wc",
+        "start": "es-dev-server --app-index index.html --node-resolve --dedupe --watch --open",
+        "start:build": "es-dev-server --app-index dist/index.html --open"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@open-wc/building-rollup": "^0.19.1",
+        "@open-wc/building-utils": "^2.11.0",
+        "@rollup/plugin-multi-entry": "^3.0.0",
+        "@rollup/plugin-node-resolve": "^7.0.0",
+        "@webcomponents/webcomponentsjs": "^2.4.1",
+        "autoprefixer": "^9.7.4",
+        "bootstrap": "^4.4.1",
+        "cssnano": "^4.1.10",
+        "deepmerge": "^4.2.2",
+        "es-dev-server": "^1.36.2",
+        "intersection-observer": "^0.7.0",
+        "node-sass": "^4.13.1",
+        "postcss": "^7.0.26",
+        "postcss-css-variables": "^0.14.0",
+        "rimraf": "^3.0.0",
+        "rollup": "^1.29.1",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-cpy": "^2.0.1",
+        "rollup-plugin-index-html": "^1.7.5",
+        "rollup-plugin-postcss": "^2.0.4",
+        "rollup-plugin-sass": "^1.2.2",
+        "rollup-plugin-terser": "^5.2.0",
+        "rollup-plugin-workbox": "^4.0.0"
+    }
+}
