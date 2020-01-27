@@ -70,6 +70,17 @@
 			background-image: linear-gradient(0deg, transparent 0%, #000 100%);
 		}
 	</style>
+
+	<!-- <link
+		rel="preload"
+		href="https://d3nqyj77tiy5sq.cloudfront.net/ehi-wc.js"
+		as="script"
+		crossorigin="anonymous"
+	>
+	<link
+		rel="stylesheet"
+		href="https://d3nqyj77tiy5sq.cloudfront.net/ehi-wc.css"
+	> -->
 </head>
 
 <body>
@@ -112,6 +123,59 @@
 		window.customElements.define('ehi-header', EhiHeader);
 		window.customElements.define('ehi-footer', EhiFooter);
 	</script>
+
+	<!-- <script>
+		window.importShim = t => import(t.startsWith(".") ? new URL(t, document.baseURI) : t);
+	</script>
+	<script
+		src="https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/core-js.js"
+		nomodule=""
+	></script>
+	<script
+		src="https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/systemjs.js"
+		nomodule=""
+	></script>
+	<script
+		src="https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/regenerator-runtime.js"
+		nomodule=""
+	></script>
+	<script>
+		! function () {
+			function e(e, o) {
+				return new Promise((function (t, n) {
+					document.head.appendChild(Object.assign(document.createElement("script"), {
+						src: e,
+						onload: t,
+						onerror: n
+					}, o ? {
+						type: "module"
+					} : void 0))
+				}))
+			}
+			var o = [];
+
+			function t() {
+				"noModule" in HTMLScriptElement.prototype ? window.importShim(
+					"https://d3nqyj77tiy5sq.cloudfront.net/ehi-wc.js") : System.import(
+					"https://d3nqyj77tiy5sq.cloudfront.net/legacy/ehi-wc.js")
+			}
+			"fetch" in window || o.push(e("https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/fetch.js", !1)),
+				"noModule" in
+				HTMLScriptElement.prototype && !("importShim" in window) && o.push(e(
+					"https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/dynamic-import.js", !1)),
+				"IntersectionObserver" in window &&
+				"IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype ||
+				o.push(e("https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/intersection-observer.js", !1)),
+				"attachShadow" in
+				Element.prototype && "getRootNode" in Element.prototype && (!window.ShadyDOM || !window.ShadyDOM.force) || o
+				.push(e("https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/webcomponents.js", !1)), !("noModule" in
+					HTMLScriptElement
+					.prototype) && "getRootNode" in Element.prototype && o.push(e(
+					"https://d3nqyj77tiy5sq.cloudfront.net/src/assets/polyfills/custom-elements-es5-adapter.js", !1)), o
+				.length ? Promise.all(
+					o).then(t) : t()
+		}();
+	</script> -->
 </body>
 
 </html>

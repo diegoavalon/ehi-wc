@@ -82,7 +82,8 @@ ehi-header {
                     margin-left: 10px;
                     margin-bottom: 3px;
                 }
-                &.is-open {
+                &.is-open,
+                &:hover {
                     background: var(--gray-lighter);
                     box-shadow: inset 0px 7px 3px -3px var(--green);
                     .nav-item__dropdown {

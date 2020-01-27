@@ -74,12 +74,6 @@ export class EhiHeader extends HTMLElement {
 				// Set a flag to reference mobile menus is open
 				this.mobileMenuIsActive = true
 				this.$mobileMenu = this.$mobileNavEl.querySelector('.menu-overlay')
-
-				if (e.detail === 0) {
-					this.$mobileMenu.addEventListener('transitionend', e => {
-						this.focusNextElement(e.target)
-					})
-				}
 			}
 
 			// Detect if main nav link is clicked or triggered by keyboard
@@ -90,9 +84,7 @@ export class EhiHeader extends HTMLElement {
 				this.dropdownIsActive = true
 
 				if (e.detail === 0) {
-					e.target.nextElementSibling.addEventListener('transitionend', e => {
-						this.focusNextElement(e.target)
-					})
+					setTimeout(() => this.focusNextElement(e.target.nextElementSibling), 60)
 				}
 			}
 			return;
@@ -105,6 +97,16 @@ export class EhiHeader extends HTMLElement {
 			if (this.dropdownIsActive && !e.target.closest('.is-open')) {
 				this.closeAllDropdowns()
 			}
+		})
+
+		// Add mouseover event also to remove dropdowns when one already open
+		this.$mainNav.addEventListener('mouseover', e => {
+			if (!this.dropdownIsActive) return
+
+			if (this.dropdownIsActive && !e.target.closest('.is-open')) {
+				this.closeAllDropdowns()
+			}
+			return
 		})
 
 		// Remove open dropdown when focus leaves entire dropdown

@@ -9545,13 +9545,13 @@ ehi-header .nav-item--main.has-dropdown > button:after {
   margin-bottom: 3px;
 }
 
-ehi-header .nav-item--main.has-dropdown.is-open {
+ehi-header .nav-item--main.has-dropdown.is-open, ehi-header .nav-item--main.has-dropdown:hover {
   background: var(--gray-lighter);
   -webkit-box-shadow: inset 0px 7px 3px -3px var(--green);
           box-shadow: inset 0px 7px 3px -3px var(--green);
 }
 
-ehi-header .nav-item--main.has-dropdown.is-open .nav-item__dropdown {
+ehi-header .nav-item--main.has-dropdown.is-open .nav-item__dropdown, ehi-header .nav-item--main.has-dropdown:hover .nav-item__dropdown {
   pointer-events: initial;
   opacity: 1;
   visibility: visible;
